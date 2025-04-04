@@ -1,0 +1,4 @@
+[
+    {"input": "Age: 10, Difficulty: Medium, Study Hours: 2", "output": "Syllabus should include phonics-based reading, visual learning tools, and daily math exercises."},
+    {"input": "Age: 15, Difficulty: High, Study Hours: 4", "output": "Include structured learning modules, spaced repetition, and interactive study materials."}
+]

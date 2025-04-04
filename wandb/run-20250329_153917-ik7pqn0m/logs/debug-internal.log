@@ -1,0 +1,16 @@
+{"time":"2025-03-29T15:39:17.1873757+05:30","level":"INFO","msg":"stream: starting","core version":"0.19.8","symlink path":"C:\\binary-hackathon\\wandb\\run-20250329_153917-ik7pqn0m\\logs\\debug-core.log"}
+{"time":"2025-03-29T15:39:17.3001695+05:30","level":"INFO","msg":"created new stream","id":"ik7pqn0m"}
+{"time":"2025-03-29T15:39:17.3001695+05:30","level":"INFO","msg":"stream: started","id":"ik7pqn0m"}
+{"time":"2025-03-29T15:39:17.3001695+05:30","level":"INFO","msg":"sender: started","stream_id":"ik7pqn0m"}
+{"time":"2025-03-29T15:39:17.3001695+05:30","level":"INFO","msg":"writer: Do: started","stream_id":"ik7pqn0m"}
+{"time":"2025-03-29T15:39:17.3001695+05:30","level":"INFO","msg":"handler: started","stream_id":"ik7pqn0m"}
+{"time":"2025-03-29T15:39:17.9238396+05:30","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-03-29T15:39:27.7738197+05:30","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-03-29T15:39:27.7738197+05:30","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-03-29T15:39:28.7813579+05:30","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading artifact syllabus","runtime_seconds":1.0113485},{"desc":"uploading config.yaml","runtime_seconds":0.2537481,"progress":"441B/441B"}],"total_operations":2}}
+{"time":"2025-03-29T15:39:31.1814471+05:30","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-03-29T15:39:31.6926656+05:30","level":"INFO","msg":"stream: closing","id":"ik7pqn0m"}
+{"time":"2025-03-29T15:39:31.6926656+05:30","level":"INFO","msg":"handler: closed","stream_id":"ik7pqn0m"}
+{"time":"2025-03-29T15:39:31.6926656+05:30","level":"INFO","msg":"writer: Close: closed","stream_id":"ik7pqn0m"}
+{"time":"2025-03-29T15:39:31.6926656+05:30","level":"INFO","msg":"sender: closed","stream_id":"ik7pqn0m"}
+{"time":"2025-03-29T15:39:31.6926656+05:30","level":"INFO","msg":"stream: closed","id":"ik7pqn0m"}

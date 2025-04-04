@@ -1,0 +1,16 @@
+{"time":"2025-03-29T15:41:07.1509242+05:30","level":"INFO","msg":"stream: starting","core version":"0.19.8","symlink path":"C:\\binary-hackathon\\wandb\\run-20250329_154107-n3sik74z\\logs\\debug-core.log"}
+{"time":"2025-03-29T15:41:07.2613187+05:30","level":"INFO","msg":"created new stream","id":"n3sik74z"}
+{"time":"2025-03-29T15:41:07.2613187+05:30","level":"INFO","msg":"stream: started","id":"n3sik74z"}
+{"time":"2025-03-29T15:41:07.2613187+05:30","level":"INFO","msg":"handler: started","stream_id":"n3sik74z"}
+{"time":"2025-03-29T15:41:07.2613187+05:30","level":"INFO","msg":"writer: Do: started","stream_id":"n3sik74z"}
+{"time":"2025-03-29T15:41:07.2641057+05:30","level":"INFO","msg":"sender: started","stream_id":"n3sik74z"}
+{"time":"2025-03-29T15:41:07.8866586+05:30","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-03-29T15:41:08.0741716+05:30","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-03-29T15:41:08.0741716+05:30","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-03-29T15:41:09.0816014+05:30","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 0-0, summary","runtime_seconds":0.2793235},{"desc":"updating run config","runtime_seconds":0.2718239}],"total_operations":2}}
+{"time":"2025-03-29T15:41:09.9807958+05:30","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-03-29T15:41:10.6854878+05:30","level":"INFO","msg":"stream: closing","id":"n3sik74z"}
+{"time":"2025-03-29T15:41:10.6854878+05:30","level":"INFO","msg":"handler: closed","stream_id":"n3sik74z"}
+{"time":"2025-03-29T15:41:10.6854878+05:30","level":"INFO","msg":"writer: Close: closed","stream_id":"n3sik74z"}
+{"time":"2025-03-29T15:41:10.6864888+05:30","level":"INFO","msg":"sender: closed","stream_id":"n3sik74z"}
+{"time":"2025-03-29T15:41:10.6864888+05:30","level":"INFO","msg":"stream: closed","id":"n3sik74z"}

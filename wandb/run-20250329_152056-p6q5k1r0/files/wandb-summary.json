@@ -1,0 +1,1 @@
+{"_timestamp":1.7432418573933713e+09,"_runtime":0.8469034,"_step":0,"_wandb":{"runtime":0},"error":"Error: Tesseract OCR is not installed or not in PATH. Please install it and try again."}

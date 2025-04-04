@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Marks Report</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="teacher-dyslexia-dashboard">
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="https://via.placeholder.com/30" alt="Logo" class="logo-img">
+                <a href="/" class="logo-text">LearnlyticAssist</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/student_dyslexia">Writing Analysis</a></li>
+                    <li><a href="/student_routine">Learning Plan</a></li>
+                    <li><a href="/teacher_marks_report" class="active">Teacher Dashboard</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Dyslexia-Friendly Progress Report Generator</h1>
+        <p class="intro-text">Generate personalized progress reports for students with dyslexia to track their improvement and set achievable goals.</p>
+        
+        <form method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="age">Student Age:</label>
+                <input type="text" id="age" name="age" required placeholder="e.g., 12 years">
+            </div>
+
+            <div class="form-group">
+                <label for="previous_test_marks">Previous Test Marks:</label>
+                <input type="text" id="previous_test_marks" name="previous_test_marks" required placeholder="e.g., 65%, B+, or specific scores">
+            </div>
+
+            <div class="form-group">
+                <label for="target_marks">Target Marks:</label>
+                <input type="text" id="target_marks" name="target_marks" required placeholder="e.g., 75%, A, or specific scores">
+            </div>
+            
+            <div class="form-group">
+                <label for="learning_style">Student's Learning Style:</label>
+                <select id="learning_style" name="learning_style" required>
+                    <option value="">Select learning style</option>
+                    <option value="Visual">Visual</option>
+                    <option value="Auditory">Auditory</option>
+                    <option value="Kinesthetic">Kinesthetic</option>
+                    <option value="Reading/Writing">Reading/Writing</option>
+                    <option value="Multimodal">Multimodal</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="preferred_subjects">Preferred Subjects/Topics:</label>
+                <input type="text" id="preferred_subjects" name="preferred_subjects" placeholder="e.g., Science, Art, History">
+            </div>
+
+            <div class="form-group">
+                <label for="challenges">Specific Challenges:</label>
+                <textarea id="challenges" name="challenges" rows="3" placeholder="Describe any specific challenges the student faces"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="goals">Learning Goals:</label>
+                <textarea id="goals" name="goals" rows="3" placeholder="Describe the learning goals for this student"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="additional_notes">Additional Notes:</label>
+                <textarea id="additional_notes" name="additional_notes" rows="3" placeholder="Any additional information that might be helpful"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="files">Upload Previous Reports/Work Samples (Optional):</label>
+                <input type="file" id="files" name="files" multiple>
+                <p class="file-hint">PDF files work best. These will help generate a more personalized report.</p>
+            </div>
+
+            <button type="submit">Generate Progress Report</button>
+        </form>
+
+        {% if error %}
+            <div class="error-message">
+                <p style="color: red;">{{ error }}</p>
+            </div>
+        {% endif %}
+
+        {% if report %}
+            <div class="results-container">
+                <h2>Generated Progress Report</h2>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 100%;"></div>
+                </div>
+                <pre id="report-content">{{ report }}</pre>
+                
+                <div class="action-buttons">
+                    <button id="speech-toggle" class="action-btn" onclick="toggleSpeech()">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                        </svg>
+                        Read Aloud
+                    </button>
+                    <button id="speech-stop" class="action-btn stop-btn" onclick="stopSpeech()" style="display: none;">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                        </svg>
+                        Stop Reading
+                    </button>
+                    <a href="{{ pdf_path }}" download class="action-btn download">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                        </svg>
+                        Download PDF
+                    </a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    <script>
+        let speaking = false;
+        let speechUtterance = null;
+
+        function toggleSpeech() {
+            const text = document.getElementById('report-content').textContent;
+            
+            if (!speaking) {
+                // Start speaking
+                if ('speechSynthesis' in window) {
+                    speechUtterance = new SpeechSynthesisUtterance(text);
+                    speechUtterance.rate = 0.9;
+                    speechUtterance.pitch = 1;
+                    
+                    speechUtterance.onend = function() {
+                        speaking = false;
+                        document.getElementById('speech-toggle').style.display = "inline-flex";
+                        document.getElementById('speech-stop').style.display = "none";
+                    };
+                    
+                    window.speechSynthesis.speak(speechUtterance);
+                    speaking = true;
+                    document.getElementById('speech-toggle').style.display = "none";
+                    document.getElementById('speech-stop').style.display = "inline-flex";
+                }
+            }
+        }
+        
+        function stopSpeech() {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                speaking = false;
+                document.getElementById('speech-toggle').style.display = "inline-flex";
+                document.getElementById('speech-stop').style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

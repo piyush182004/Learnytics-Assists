@@ -1,0 +1,19 @@
+{"time":"2025-03-29T15:17:03.1123477+05:30","level":"INFO","msg":"stream: starting","core version":"0.19.8","symlink path":"C:\\binary-hackathon\\wandb\\run-20250329_151703-oi6s5pwf\\logs\\debug-core.log"}
+{"time":"2025-03-29T15:17:03.2239704+05:30","level":"INFO","msg":"created new stream","id":"oi6s5pwf"}
+{"time":"2025-03-29T15:17:03.2239704+05:30","level":"INFO","msg":"stream: started","id":"oi6s5pwf"}
+{"time":"2025-03-29T15:17:03.2245769+05:30","level":"INFO","msg":"writer: Do: started","stream_id":"oi6s5pwf"}
+{"time":"2025-03-29T15:17:03.2245769+05:30","level":"INFO","msg":"handler: started","stream_id":"oi6s5pwf"}
+{"time":"2025-03-29T15:17:03.2245769+05:30","level":"INFO","msg":"sender: started","stream_id":"oi6s5pwf"}
+{"time":"2025-03-29T15:17:03.8710479+05:30","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-03-29T15:17:18.8793251+05:30","level":"ERROR","msg":"monitor: error sampling metrics: The parameter is incorrect.\ncould not get CreationDate: The parameter is incorrect.\ncouldn't find pid: 20312"}
+{"time":"2025-03-29T15:17:33.8841996+05:30","level":"ERROR","msg":"monitor: error sampling metrics: The parameter is incorrect.\ncould not get CreationDate: The parameter is incorrect.\ncouldn't find pid: 20312"}
+{"time":"2025-03-29T15:17:48.8797758+05:30","level":"ERROR","msg":"monitor: error sampling metrics: The parameter is incorrect.\ncould not get CreationDate: The parameter is incorrect.\ncouldn't find pid: 20312"}
+{"time":"2025-03-29T15:18:03.8794504+05:30","level":"ERROR","msg":"monitor: error sampling metrics: The parameter is incorrect.\ncould not get CreationDate: The parameter is incorrect.\ncouldn't find pid: 20312"}
+{"time":"2025-03-29T15:18:14.8329827+05:30","level":"INFO","msg":"stream: closing","id":"oi6s5pwf"}
+{"time":"2025-03-29T15:18:14.8329827+05:30","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-03-29T15:18:14.8336439+05:30","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-03-29T15:18:16.720066+05:30","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-03-29T15:18:17.4224519+05:30","level":"INFO","msg":"handler: closed","stream_id":"oi6s5pwf"}
+{"time":"2025-03-29T15:18:17.4224519+05:30","level":"INFO","msg":"writer: Close: closed","stream_id":"oi6s5pwf"}
+{"time":"2025-03-29T15:18:17.4224519+05:30","level":"INFO","msg":"sender: closed","stream_id":"oi6s5pwf"}
+{"time":"2025-03-29T15:18:17.4237433+05:30","level":"INFO","msg":"stream: closed","id":"oi6s5pwf"}

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Learning Resources</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="https://via.placeholder.com/30" alt="Logo" class="logo-img">
+                <a href="/" class="logo-text">LearnlyticAssist</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/student_dyslexia">Writing Analysis</a></li>
+                    <li><a href="/student_routine" class="active">Learning Plan</a></li>
+                    <li><a href="/teacher_syllabus">Teacher Dashboard</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>Student Learning Resources</h1>
+            
+            <div class="tabs">
+                <button class="tab-btn active" onclick="openTab('mind_map_tab')">Generate Mind Map</button>
+                <button class="tab-btn" onclick="openTab('learning_plan_tab')">Create Learning Plan</button>
+            </div>
+            
+            <!-- Mind Map Tab -->
+            <div id="mind_map_tab" class="tab-content">
+                <h2>Generate Mind Map</h2>
+                <p>Upload your study material to get a structured mind map.</p>
+                
+                <form method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="form_type" value="mind_map">
+                    
+                    <div class="form-group">
+                        <label for="file">Upload Study Material:</label>
+                        <input type="file" id="file" name="file" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="days_remaining">Days Available for Study:</label>
+                        <input type="text" id="days_remaining" name="days_remaining" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject_focus">Subject Focus:</label>
+                        <input type="text" id="subject_focus" name="subject_focus" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Generate Mind Map</button>
+                </form>
+            </div>
+            
+            <!-- Learning Plan Tab -->
+            <div id="learning_plan_tab" class="tab-content" style="display:none;">
+                <h2>Create Personalized Learning Plan</h2>
+                <p>Get a customized learning plan tailored to your needs and learning style.</p>
+                
+                <form method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="form_type" value="learning_plan">
+                    
+                    <div class="form-group">
+                        <label for="file_lp">Upload Study Material:</label>
+                        <input type="file" id="file_lp" name="file" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="days_remaining_lp">Days Available for Study:</label>
+                        <input type="text" id="days_remaining_lp" name="days_remaining" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject_focus_lp">Subject Focus:</label>
+                        <input type="text" id="subject_focus_lp" name="subject_focus" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="learning_style">Your Learning Style:</label>
+                        <input type="text" id="learning_style" name="learning_style" placeholder="Visual, Auditory, Kinesthetic, etc.">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="challenges">Learning Challenges:</label>
+                        <textarea id="challenges" name="challenges" rows="3" placeholder="What difficulties do you face when studying?"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="goals">Learning Goals:</label>
+                        <textarea id="goals" name="goals" rows="3" placeholder="What do you want to achieve?"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Create Learning Plan</button>
+                </form>
+            </div>
+
+            {% if error %}
+                <div class="error-message">
+                    <p style="color: red;">{{ error }}</p>
+                </div>
+            {% endif %}
+
+            {% if result %}
+                <div class="results-container">
+                    <h2>Generated Mind Map:</h2>
+                    <pre>{{ result }}</pre>
+                    {% if file_path %}
+                        <a href="{{ file_path }}" download class="btn btn-outline">Download Uploaded File</a>
+                    {% endif %}
+                </div>
+            {% endif %}
+
+            {% if learning_plan %}
+                <div class="results-container">
+                    <h2>Your Personalized Learning Plan:</h2>
+                    <pre>{{ learning_plan }}</pre>
+                    {% if file_path %}
+                        <a href="{{ file_path }}" download class="btn btn-outline">Download Uploaded File</a>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </main>
+    
+    <script>
+        function openTab(tabName) {
+            // Hide all tab contents
+            var tabContents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].style.display = "none";
+            }
+            
+            // Remove active class from all tab buttons
+            var tabButtons = document.getElementsByClassName("tab-btn");
+            for (var i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].className = tabButtons[i].className.replace(" active", "");
+            }
+            
+            // Show the specific tab content
+            document.getElementById(tabName).style.display = "block";
+            
+            // Add active class to the button that opened the tab
+            event.currentTarget.className += " active";
+        }
+    </script>
+</body>
+</html>

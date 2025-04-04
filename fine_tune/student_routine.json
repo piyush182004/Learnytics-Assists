@@ -1,0 +1,4 @@
+[
+    {"input": "Days Remaining: 5, Focus: Math", "output": "Revise algebra and trigonometry in the first 2 days, focus on calculus on the next day, and solve past papers for the last 2 days."},
+    {"input": "Days Remaining: 10, Focus: Science", "output": "Divide time equally among physics, chemistry, and biology. Solve one past paper daily."}
+]

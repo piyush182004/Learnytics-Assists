@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnlyticAssist</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="https://via.placeholder.com/30" alt="Logo" class="logo-img">
+                <a href="/" class="logo-text">LearnlyticAssist</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/" class="active">Home</a></li>
+                    <li><a href="/student_dyslexia" class="dyslexia-link">Writing Analysis</a></li>
+                    <li><a href="/student_routine">Learning Plan</a></li>
+                    <li><a href="/teacher_syllabus">Teacher Dashboard</a></li>
+                </ul>
+            </nav>
+            <div class="user-actions">
+                <div class="support">
+                    <img src="https://via.placeholder.com/20" alt="Support" class="support-icon">
+                    <span>Welcome, Parthib Sarkar</span>
+                </div>
+                <a href="#" class="btn btn-secondary">Sign Out</a>
+                <a href="#" class="btn btn-primary">Get Started</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h1>
+                        <span class="title-dark">AI-Powered</span>
+                        <span class="title-dark">Detection &</span>
+                        <span class="title-purple">Learning Assistance</span>
+                    </h1>
+                    <p class="hero-description">
+                        Early detection of learning disabilities and personalized learning plans to help every student reach their full potential.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="/student_dyslexia" class="btn btn-primary dyslexia-link">
+                            Try Writing Analysis
+                            <span class="arrow">→</span>
+                        </a>
+                        <a href="/student_routine" class="btn btn-outline">Explore Learning Plan</a>
+                    </div>
+                </div>
+                <div class="hero-card">
+                    <div class="card-header">
+                        <div class="dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <p class="card-title">Personalized Learning Analysis</p>
+                    </div>
+                    <div class="card-content">
+                        <div class="analysis-result">
+                            <div class="icon-container">
+                                <img src="https://via.placeholder.com/24" alt="Folder" class="folder-icon">
+                            </div>
+                            <p class="result-text">
+                                Based on the writing sample, I've detected patterns consistent with dyslexia.
+                            </p>
+                        </div>
+                        <div class="loading-area">
+                            <div class="loading-bars">
+                                <div class="bar bar-1"></div>
+                                <div class="bar bar-2"></div>
+                                <div class="bar bar-3"></div>
+                            </div>
+                            <p class="loading-text">Generating learning plan...</p>
+                            <div class="loading-dots">
+                                <span class="loading-dot"></span>
+                                <span class="loading-dot"></span>
+                                <span class="loading-dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Section -->
+            <div class="stats-section">
+                <div class="stat-card">
+                    <div class="stat-icon accuracy">
+                        <img src="https://via.placeholder.com/24" alt="Accuracy" class="stat-img">
+                    </div>
+                    <div class="stat-info">
+                        <h3 class="stat-value">99%</h3>
+                        <p class="stat-label">Accuracy</p>
+                        <p class="stat-subtext">in detection</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon students">
+                        <img src="https://via.placeholder.com/24" alt="Students" class="stat-img">
+                    </div>
+                    <div class="stat-info">
+                        <h3 class="stat-value">10k+</h3>
+                        <p class="stat-label">Students</p>
+                        <p class="stat-subtext">were helped</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon disabilities">
+                        <img src="https://via.placeholder.com/24" alt="Disabilities" class="stat-img">
+                    </div>
+                    <div class="stat-info">
+                        <h3 class="stat-value">30+</h3>
+                        <p class="stat-label">Disabilities</p>
+                        <p class="stat-subtext">detected</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Section -->
+            <section class="quiz-section">
+                <h2 class="section-title">Test Your Knowledge</h2>
+                <p class="section-description">Take this AI-generated quiz to assess your understanding of learning disabilities.</p>
+                
+                <div class="generate-options">
+                    <button id="generate-quiz-btn" class="btn btn-primary">Generate New Quiz with AI</button>
+                </div>
+                
+                <div class="quiz-container" id="learningQuiz">
+                    <h3 class="quiz-title">Learning Disabilities Quiz</h3>
+                    
+                    <div id="quiz-questions">
+                        <!-- Questions will be loaded here dynamically -->
+                        <div class="quiz-loader">
+                            <div class="loading-dots">
+                                <span class="loading-dot"></span>
+                                <span class="loading-dot"></span>
+                                <span class="loading-dot"></span>
+                            </div>
+                            <p>Start or generate a new quiz...</p>
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-buttons">
+                        <button id="submit-quiz" class="btn btn-primary" style="display:none;">Submit Answers</button>
+                        <button id="start-quiz" class="btn btn-primary">Start Quiz</button>
+                    </div>
+                </div>
+                
+                <div id="quiz-results" class="quiz-result-container" style="display:none;">
+                    <h3>Your Results</h3>
+                    <div class="score-display">
+                        You scored <span id="score-value">0</span> out of <span id="total-questions">0</span>
+                    </div>
+                    <div class="score-chart-container">
+                        <canvas id="quizResultChart"></canvas>
+                    </div>
+                    <div class="quiz-feedback">
+                        <h4>Feedback</h4>
+                        <p id="quiz-feedback-text"></p>
+                    </div>
+                    <button id="retake-quiz" class="btn btn-outline">Retake Quiz</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Quiz questions bank (default questions)
+        const defaultQuizQuestions = [
+            {
+                question: "What is dyslexia primarily associated with?",
+                options: [
+                    "Difficulty with mathematics",
+                    "Difficulty with reading and writing",
+                    "Difficulty with social interactions",
+                    "Difficulty with physical coordination"
+                ],
+                correctAnswer: 1
+            },
+            {
+                question: "Which of these is NOT typically a sign of dyslexia?",
+                options: [
+                    "Difficulty with phonological awareness",
+                    "Trouble with reading comprehension",
+                    "Poor color vision",
+                    "Letter reversals when writing"
+                ],
+                correctAnswer: 2
+            },
+            {
+                question: "Approximately what percentage of people have some form of dyslexia?",
+                options: [
+                    "1-2%",
+                    "5-10%",
+                    "15-20%",
+                    "30-40%"
+                ],
+                correctAnswer: 2
+            },
+            {
+                question: "Which teaching approach is often beneficial for students with dyslexia?",
+                options: [
+                    "Visual-only instruction",
+                    "Multisensory teaching techniques",
+                    "Accelerated reading programs",
+                    "Increased homework assignments"
+                ],
+                correctAnswer: 1
+            },
+            {
+                question: "Dyslexia is related to:",
+                options: [
+                    "Low intelligence",
+                    "Laziness or lack of effort",
+                    "Differences in how the brain processes language",
+                    "Poor vision"
+                ],
+                correctAnswer: 2
+            },
+            {
+                question: "Which famous person is known to have dyslexia?",
+                options: [
+                    "Albert Einstein",
+                    "All of these",
+                    "Steven Spielberg",
+                    "Leonardo da Vinci"
+                ],
+                correctAnswer: 1
+            },
+            {
+                question: "What technology tool can be particularly helpful for students with dyslexia?",
+                options: [
+                    "Text-to-speech software",
+                    "Virtual reality headsets",
+                    "Social media platforms",
+                    "Gaming consoles"
+                ],
+                correctAnswer: 0
+            },
+            {
+                question: "Early intervention for dyslexia is important because:",
+                options: [
+                    "It can prevent dyslexia altogether",
+                    "It can significantly improve reading outcomes",
+                    "It's cheaper than later intervention",
+                    "It's required by law"
+                ],
+                correctAnswer: 1
+            },
+            {
+                question: "Which of these is a strength often associated with dyslexia?",
+                options: [
+                    "Mathematical calculation",
+                    "Spelling ability",
+                    "Creative thinking and problem-solving",
+                    "Memorization"
+                ],
+                correctAnswer: 2
+            }
+        ];
+
+        let quizQuestions = [...defaultQuizQuestions];
+        let currentQuestions = [];
+        let userAnswers = {};
+        let quizStarted = false;
+
+        // Start quiz button
+        document.getElementById('start-quiz').addEventListener('click', function() {
+            startQuiz();
+            this.style.display = 'none';
+            document.getElementById('submit-quiz').style.display = 'block';
+        });
+
+        // Submit quiz button
+        document.getElementById('submit-quiz').addEventListener('click', function() {
+            if (Object.keys(userAnswers).length < currentQuestions.length) {
+                alert("Please answer all questions before submitting.");
+                return;
+            }
+            
+            showResults();
+            this.style.display = 'none';
+        });
+
+        // Retake quiz button
+        document.getElementById('retake-quiz').addEventListener('click', function() {
+            document.getElementById('quiz-results').style.display = 'none';
+            document.getElementById('quiz-questions').innerHTML = '';
+            document.getElementById('start-quiz').style.display = 'block';
+            userAnswers = {};
+        });
+        
+        // Generate quiz with Gemma AI
+        document.getElementById('generate-quiz-btn').addEventListener('click', function() {
+            // Show loading state
+            document.getElementById('quiz-questions').innerHTML = `
+                <div class="quiz-loader">
+                    <div class="loading-dots">
+                        <span class="loading-dot"></span>
+                        <span class="loading-dot"></span>
+                        <span class="loading-dot"></span>
+                    </div>
+                    <p>Generating new AI questions...</p>
+                </div>
+            `;
+            
+            // Call the backend API
+            fetch('/generate_quiz')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        quizQuestions = data.questions;
+                        // If quiz is already started, restart with new questions
+                        if (quizStarted) {
+                            startQuiz();
+                        } else {
+                            // Just update the question pool
+                            document.getElementById('quiz-questions').innerHTML = `
+                                <div class="quiz-loader">
+                                    <div class="success-message">
+                                        <svg class="success-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                            <path fill="#1dd1a1" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                                        </svg>
+                                        <p>New AI-generated questions ready! Click "Start Quiz" to begin.</p>
+                                    </div>
+                                </div>
+                            `;
+                        }
+                    } else {
+                        document.getElementById('quiz-questions').innerHTML = `
+                            <div class="error-message">
+                                <p>Failed to generate quiz: ${data.error || 'Unknown error'}</p>
+                                <p>Using default questions instead.</p>
+                            </div>
+                        `;
+                        quizQuestions = [...defaultQuizQuestions];
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    document.getElementById('quiz-questions').innerHTML = `
+                        <div class="error-message">
+                            <p>Failed to generate quiz. Using default questions instead.</p>
+                        </div>
+                    `;
+                    quizQuestions = [...defaultQuizQuestions];
+                });
+        });
+
+        function startQuiz() {
+            // Select 6 random questions
+            currentQuestions = getRandomQuestions(quizQuestions, Math.min(6, quizQuestions.length));
+            renderQuestions(currentQuestions);
+            quizStarted = true;
+        }
+
+        function getRandomQuestions(questions, count) {
+            const shuffled = [...questions].sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, count);
+        }
+
+        function renderQuestions(questions) {
+            const questionsContainer = document.getElementById('quiz-questions');
+            questionsContainer.innerHTML = '';
+            
+            questions.forEach((q, index) => {
+                const questionCard = document.createElement('div');
+                questionCard.className = 'question-card';
+                
+                let optionsHtml = '';
+                q.options.forEach((option, optIndex) => {
+                    optionsHtml += `
+                        <div class="option-item" data-question="${index}" data-option="${optIndex}" onclick="selectOption(this)">
+                            <span class="option-letter">${String.fromCharCode(65 + optIndex)}.</span>
+                            <span class="option-text">${option}</span>
+                        </div>
+                    `;
+                });
+                
+                questionCard.innerHTML = `
+                    <div class="question-number">Question ${index + 1}</div>
+                    <div class="question-text">${q.question}</div>
+                    <div class="options-list">${optionsHtml}</div>
+                `;
+                
+                questionsContainer.appendChild(questionCard);
+            });
+        }
+
+        function selectOption(element) {
+            const questionIndex = element.dataset.question;
+            const optionIndex = element.dataset.option;
+            
+            // Remove selected class from all options in this question
+            const allOptions = document.querySelectorAll(`.option-item[data-question="${questionIndex}"]`);
+            allOptions.forEach(opt => opt.classList.remove('selected'));
+            
+            // Add selected class to clicked option
+            element.classList.add('selected');
+            
+            // Record user answer
+            userAnswers[questionIndex] = parseInt(optionIndex);
+        }
+
+        function showResults() {
+            // Calculate score
+            let score = 0;
+            for (const [qIndex, aIndex] of Object.entries(userAnswers)) {
+                if (aIndex === currentQuestions[qIndex].correctAnswer) {
+                    score++;
+                }
+            }
+            
+            // Update result display
+            document.getElementById('score-value').textContent = score;
+            document.getElementById('total-questions').textContent = currentQuestions.length;
+            
+            // Feedback based on score
+            const feedbackText = document.getElementById('quiz-feedback-text');
+            const percentage = (score / currentQuestions.length) * 100;
+            
+            if (percentage >= 80) {
+                feedbackText.textContent = "Excellent! You have a strong understanding of learning disabilities.";
+            } else if (percentage >= 60) {
+                feedbackText.textContent = "Good job! You know quite a bit about learning disabilities, but there's still more to learn.";
+            } else {
+                feedbackText.textContent = "You have some basic knowledge about learning disabilities. Exploring our resources can help you learn more.";
+            }
+            
+            // Show results
+            document.getElementById('quiz-results').style.display = 'block';
+            
+            // Create chart
+            createResultChart(score, currentQuestions.length - score);
+        }
+
+        function createResultChart(correct, incorrect) {
+            const ctx = document.getElementById('quizResultChart').getContext('2d');
+            
+            // Destroy existing chart if it exists
+            if (window.quizChart) {
+                window.quizChart.destroy();
+            }
+            
+            window.quizChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Correct', 'Incorrect'],
+                    datasets: [{
+                        data: [correct, incorrect],
+                        backgroundColor: [
+                            '#8a2be2',
+                            '#ffecb3'
+                        ],
+                        borderColor: [
+                            '#6a11cb',
+                            '#ffcc80'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    },
+                    cutout: '70%'
+                }
+            });
+        }
+
+        // Expose the function for HTML onclick
+        window.selectOption = selectOption;
+    </script>
+</body>
+</html>
